@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import './App.css';
+
+const propTypes = {
+    name: PropTypes.string.isRequired,
+    onClicked: PropTypes.func,
+    title: PropTypes.string.isRequired
+};
 
 class MyComponent extends Component {
   render() {
@@ -14,5 +22,7 @@ class MyComponent extends Component {
     );
   }
 }
+
+MyComponent.propTypes = propTypes;
 
 export default MyComponent;
