@@ -11,20 +11,14 @@ class App extends Component {
       }
 
     }
-    
-
-    renderTitle() {
-        if(!this.state.shouldRenderTitle) {
-            return null
-        }
-        return <h1>Title</h1>
-    }
 
   render() {
 
     return (
       <div className="App">
-        {this.renderTitle()}
+        {
+            this.state.shouldRenderTitle ? <h1>Title</h1> : null
+        }
       </div>
     );
   }
