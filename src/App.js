@@ -7,18 +7,16 @@ class App extends Component {
       super(props)
     
       this.state = {
-        name: "Initial Name",
-        title: "Initial Title"
+        checked: true
       }
 
-      this.onClick = this.onClick.bind(this);
+      this.updateCheck = this.updateCheck.bind(this);
     }
     
 
-    onClick() {
+    updateCheck() {
         this.setState({
-            name: 'New App Name',
-            title: "New App Title"
+            checked: !this.state.checked
         })
     }
 
@@ -26,10 +24,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        <MyComponent 
-            name={this.state.name}
-            title={this.state.title}
-            onClick={this.onClick}
+        <input 
+        type="checkbox"
+        onChange={this.updateCheck}
+        checked={this.state.checked} 
         />
       </div>
     );
