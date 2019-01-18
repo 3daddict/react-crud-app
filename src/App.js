@@ -1,25 +1,52 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+    constructor(props) {
+      super(props)
+    
+      this.state = {
+         
+      }
+
+      this.onSubmit = this.onSubmit.bind(this);
+    }
+    
+
+    onClick() {
+        console.log('Clicked');
+    }
+
+    onChange(event) {
+        console.log(event.target.value)
+    }
+
+    onSubmit(event) {
+        event.preventDefault();
+        console.log('Event Submitted: ', this.input.value);
+    }
+
   render() {
+      const list = [
+          'Item 1',
+          'Item 2',
+          'Item 3'
+      ]
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h1>{
+            list.map((item) => {
+                return (
+                    <div key={item} onClick={this.onClick} >
+                        {item}
+                    </div>
+                )
+            })
+        }</h1>
+        
+        <form onSubmit={this.onSubmit}>
+            <input type="text" onChange={this.onChange} ref={input => this.input = input} />
+        </form>
       </div>
     );
   }
