@@ -14,6 +14,32 @@ const defaultProps = {
 }
 
 class MyComponent extends Component {
+
+    componentWillMount() {
+        //Good place for AJAX or Axios Calls
+        //Gets data before the component mounts
+        console.log('Will Mount');
+    }
+
+    componentDidMount() {
+        //Good place to focus a field after the component loads
+        console.log('Did Mount');
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        console.log('ComponentWillUpdate: ', this.props, this.state, nextProps, nextState);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log('ComponentDidUpdate: ', this.props, this.state, prevProps, prevState);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        //allows a component to update or not via boolean
+        return true;
+    }
+
+
   render() {
     const { title, name, onClick } = this.props;
 
