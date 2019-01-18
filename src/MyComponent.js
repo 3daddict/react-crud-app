@@ -9,6 +9,10 @@ const propTypes = {
     title: PropTypes.string.isRequired
 };
 
+const defaultProps = {
+    name: 'Default name of App'
+}
+
 class MyComponent extends Component {
   render() {
     const { title, name, onClick } = this.props;
@@ -24,5 +28,6 @@ class MyComponent extends Component {
 }
 
 MyComponent.propTypes = propTypes;
+MyComponent.defaultProps = defaultProps;
 
 export default MyComponent;
