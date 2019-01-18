@@ -7,7 +7,8 @@ class App extends Component {
       super(props)
     
       this.state = {
-         title: 'App title'
+        name: "Initial Name",
+        title: "Initial Title"
       }
 
       this.onClick = this.onClick.bind(this);
@@ -16,7 +17,8 @@ class App extends Component {
 
     onClick() {
         this.setState({
-            title: "new app title"
+            name: 'New App Name',
+            title: "New App Title"
         })
     }
 
@@ -24,10 +26,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>{this.state.title}</h1>
-        <div onClick={this.onClick}>Click Here</div>
         <MyComponent 
-            title="This is the component title"
+            name={this.state.name}
+            title={this.state.title}
             onClick={this.onClick}
         />
       </div>
