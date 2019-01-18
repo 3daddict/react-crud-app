@@ -6,47 +6,25 @@ class App extends Component {
       super(props)
     
       this.state = {
-         
+         title: 'App title'
       }
 
-      this.onSubmit = this.onSubmit.bind(this);
+      this.onClick = this.onClick.bind(this);
     }
     
 
     onClick() {
-        console.log('Clicked');
-    }
-
-    onChange(event) {
-        console.log(event.target.value)
-    }
-
-    onSubmit(event) {
-        event.preventDefault();
-        console.log('Event Submitted: ', this.input.value);
+        this.setState({
+            title: "new app title"
+        })
     }
 
   render() {
-      const list = [
-          'Item 1',
-          'Item 2',
-          'Item 3'
-      ]
+
     return (
       <div className="App">
-        <h1>{
-            list.map((item) => {
-                return (
-                    <div key={item} onClick={this.onClick} >
-                        {item}
-                    </div>
-                )
-            })
-        }</h1>
-        
-        <form onSubmit={this.onSubmit}>
-            <input type="text" onChange={this.onChange} ref={input => this.input = input} />
-        </form>
+        <h1>{this.state.title}</h1>
+        <div onClick={this.onClick}>Click Here</div>
       </div>
     );
   }
