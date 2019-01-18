@@ -7,28 +7,24 @@ class App extends Component {
       super(props)
     
       this.state = {
-        checked: true
+        shouldRenderTitle: true
       }
 
-      this.updateCheck = this.updateCheck.bind(this);
     }
     
 
-    updateCheck() {
-        this.setState({
-            checked: !this.state.checked
-        })
+    renderTitle() {
+        if(!this.state.shouldRenderTitle) {
+            return null
+        }
+        return <h1>Title</h1>
     }
 
   render() {
 
     return (
       <div className="App">
-        <input 
-        type="checkbox"
-        onChange={this.updateCheck}
-        checked={this.state.checked} 
-        />
+        {this.renderTitle()}
       </div>
     );
   }
