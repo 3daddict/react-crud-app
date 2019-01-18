@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import ProductItem from "./ProductItem";
+import AddItem from './AddProduct';
 
 const products = [
   {
@@ -22,6 +23,7 @@ class App extends Component {
     this.state = {
       products: JSON.parse(localStorage.getItem("products"))
     };
+    this.onAdd = this.onAdd.bind(this);
     this.onDelete = this.onDelete.bind(this);
   }
 
@@ -35,6 +37,18 @@ class App extends Component {
 
   getProducts() {
     return this.state.products;
+  }
+
+  onAdd(name, price) {
+    const products = this.getProducts();
+
+    products.push({
+        name,
+        price
+    })
+    this.setState({
+        products: products
+    })
   }
 
   onDelete(name) {
@@ -52,6 +66,11 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Products Manager</h1>
+
+        <AddItem 
+            onAdd={this.onAdd}
+        />
+
         {this.state.products.map(product => {
           return (
             <ProductItem
